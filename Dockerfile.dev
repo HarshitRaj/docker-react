@@ -1,0 +1,10 @@
+FROM node:alpine
+
+WORKDIR  '/app'
+
+COPY package.json  .
+RUN npm install
+COPY . .
+# above copy can be removed, since we already are using docker volume
+
+CMD ["npm", "run", "start"]
