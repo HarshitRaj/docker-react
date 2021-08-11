@@ -9,3 +9,15 @@ before_install:
 
 script:
   - docker run -e CI=true harshitappd/docker-react npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-south-1"
+  app: "docker-create"
+  env: "Dockercreate-env"
+  bucket_name: "elasticbeanstalk-ap-south-1-127526769141"
+  bucket_path: "docker-create"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
