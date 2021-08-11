@@ -10,6 +10,7 @@ RUN npm run build
 # final phase
 
 FROM nginx
+EXPOSE 80
 COPY --from=builder /app/build /usr/share/nginx/html
 
 # nginx image already has default command for starting nginx
